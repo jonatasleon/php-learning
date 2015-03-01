@@ -25,7 +25,7 @@
 	if(isset($_GET['nome']) && $_GET['nome'] != '') {
 		$tarefa = array();		
 		
-		$_SESSION['lista_tarefas'][] = $_GET['nome'];
+		$tarefa['nome'] = $_GET['nome'];
 		
 		if(isset($_GET['descricao'])) {
 			$tarefa['descricao'] = $_GET['descricao'];
