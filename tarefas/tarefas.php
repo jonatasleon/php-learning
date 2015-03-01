@@ -44,7 +44,7 @@
 		if(isset($_GET['concluida'])) {
 			$tarefa['concluida'] = $_GET['concluida'];
 		}else {
-			$tarefa['concluida'] = '';
+			$tarefa['concluida'] = 'não';
 		}
 		
 		$_SESSION['lista_tarefas'][] = $tarefa;
