@@ -1,54 +1,60 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Gerenciador de Tarefas</title>
-<meta name="generator" content="Bluefish 2.2.5" >
-<meta name="author" content="Jonatas Leon" >
-<meta name="date" content="2015-03-01T02:56:52-0300" >
-<meta name="copyright" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-<meta http-equiv="content-style-type" content="text/css">
-<meta http-equiv="expires" content="0">
-<link href="tarefas.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<h1>Gerenciador de Tarefas</h1>
-	<form>
-		<fieldset>
-			<legend>Nova tarefa </legend>
-			<label>
-				Tarefa:
-				<input type="text" name="nome" />			
-			</label>		
-			<input type="submit" value="Cadastrar" />
-		</fieldset>	
-	</form>
-	<?php
-		if(isset($_GET['nome'])) {
-			$_SESSION['lista_tarefas'][] = $_GET['nome'];
-		}
-		
-		$lista_tarefas = array();
-		
-		if(isset($_SESSION['lista_tarefas'])) {
-			$lista_tarefas = $_SESSION['lista_tarefas'];
-		}
-		
-		
-	?>
+<?php 
+	session_start();
 	
-	<table cellpadding="1" border="border" align="center" width="0">
-		<tr><th>Tarefas</th></tr>
-		<?php foreach($lista_tarefas as $tarefa): ?>
-		<tr>
-			<td><?php echo $tarefa; ?></td>
-		</tr>
-		<?php endforeach; ?>
-	</table>
-</body>
-</html>
+	function table($lista){
+		echo '<table cellpadding="1" border="border" align="center" width="0">';
+		echo '<tr>
+					<th>Tarefa</th>
+					<th>Descrição</th>
+					<th>Prazo</th>
+					<th>Prioridade</th>
+					<th>Concluída</th>
+				</tr>';
+		foreach($lista as $tarefa){
+			echo '<tr>';
+			foreach($tarefa as $item){		
+				echo '<td>';
+				echo $item;
+				echo '</td>';
+			}
+			echo '</tr>';
+		}
+		echo '</table>';
+	}
+	
+	if(isset($_GET['nome']) && $_GET['nome'] != '') {
+		$tarefa = array();		
+		
+		$_SESSION['lista_tarefas'][] = $_GET['nome'];
+		
+		if(isset($_GET['descricao'])) {
+			$tarefa['descricao'] = $_GET['descricao'];
+		}else {
+			$tarefa['descricao'] = '';
+		}
+		
+		if(isset($_GET['prazo'])) {
+			$tarefa['prazo'] = $_GET['prazo'];
+		}else {
+			$tarefa['prazo'] = '';
+		}
+		
+		$tarefa['prioridade'] = $_GET['prioridade'];
+		
+		if(isset($_GET['concluida'])) {
+			$tarefa['concluida'] = $_GET['concluida'];
+		}else {
+			$tarefa['concluida'] = '';
+		}
+		
+		$_SESSION['lista_tarefas'][] = $tarefa;
+	}		
+	
+	if(isset($_SESSION['lista_tarefas'])) {
+		$lista_tarefas = $_SESSION['lista_tarefas'];
+	}else {
+		$lista_tarefas = array();
+	}		
+
+	include "template.php";
+?>
