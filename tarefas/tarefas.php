@@ -1,22 +1,26 @@
 <?php 
 	session_start();
 	
+	include "banco.php";
+	include "helpers.php";
+
 	function table($lista){
 		echo '<table cellpadding="1" border="border" align="center" width="0">';
-		echo '<tr>
-					<th>Tarefa</th>
-					<th>Descrição</th>
-					<th>Prazo</th>
-					<th>Prioridade</th>
-					<th>Concluída</th>
-				</tr>';
+		echo '<tr>';
+		echo '	<th>Tarefa</th>
+			<th>Descrição</th>
+			<th>Prazo</th>
+			<th>Prioridade</th>
+			<th>Concluída</th>';
+		echo '</tr>';
+
 		foreach($lista as $tarefa){
 			echo '<tr>';
-			foreach($tarefa as $item){		
-				echo '<td>';
-				echo $item;
-				echo '</td>';
-			}
+				echo '<td>' . $tarefa['nome'] 				. '</td>';
+				echo '<td>' . $tarefa['descricao'] 			. '</td>';
+				echo '<td>' . traduz_data_para_exibir($tarefa['prazo'])	. '</td>';
+				echo '<td>' . traduz_prioridade($tarefa['prioridade']) 	. '</td>';
+				echo '<td>' . traduz_concluida($tarefa['concluida'])	. '</td>';
 			echo '</tr>';
 		}
 		echo '</table>';
@@ -34,7 +38,7 @@
 		}
 		
 		if(isset($_GET['prazo'])) {
-			$tarefa['prazo'] = $_GET['prazo'];
+			$tarefa['prazo'] = traduz_data_para_banco($_GET['prazo']);
 		}else {
 			$tarefa['prazo'] = '';
 		}
@@ -42,19 +46,23 @@
 		$tarefa['prioridade'] = $_GET['prioridade'];
 		
 		if(isset($_GET['concluida'])) {
-			$tarefa['concluida'] = $_GET['concluida'];
+			$tarefa['concluida'] = 1;
 		}else {
-			$tarefa['concluida'] = 'não';
+			$tarefa['concluida'] = 0;
 		}
 		
-		$_SESSION['lista_tarefas'][] = $tarefa;
+		#$_SESSION['lista_tarefas'][] = $tarefa;
+
+		gravar_tarefa($conexao, $tarefa);
 	}		
 	
-	if(isset($_SESSION['lista_tarefas'])) {
-		$lista_tarefas = $_SESSION['lista_tarefas'];
-	}else {
-		$lista_tarefas = array();
-	}		
+	#if(isset($_SESSION['lista_tarefas'])) {
+	#	$lista_tarefas = $_SESSION['lista_tarefas'];
+	#}else {
+	#	$lista_tarefas = array();
+	#}
+	
+	$lista_tarefas = buscar_tarefas($conexao);
 
 	include "template.php";
 ?>

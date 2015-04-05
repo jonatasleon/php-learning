@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gerenciador de Jonatas</title>
+<title>Gerenciador de Tarefas</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="Jonatas Leon" >
 <meta name="date" content="2015-03-01T16:23:05-0300" >
@@ -35,21 +35,21 @@
 			<fieldset>
 				<legend>Prioridade</legend>
 				<label>
-					<input type="radio" name="prioridade" value="baixa" checked />
+					<input type="radio" name="prioridade" value="1" checked />
 					Baixa
 				</label>	
 				<label>
-					<input type="radio" name="prioridade" value="media" />
+					<input type="radio" name="prioridade" value="2" />
 					Média
 				</label>	
 				<label>
-					<input type="radio" name="prioridade" value="alta" />
+					<input type="radio" name="prioridade" value="3" />
 					Alta	
 				</label>	
 			</fieldset>
 			<label>
 				Tarefa concluída:
-				<input type="checkbox" name="concluida" value="sim" />		
+				<input type="checkbox" name="concluida" value="1" />		
 			</label>
 			<input type="submit" value="Cadastrar" />
 		</fieldset>	
