@@ -21,9 +21,7 @@
 	<?php include('formulario.php'); ?>
 
 	<?php if($exibir_tabela):  ?>
-		
 		<?php include('tabela.php'); ?>
-
 	<?php endif; ?>
 </body>
 </html>

@@ -1,36 +1,36 @@
 <table>
 	<tr>
 		<th>Tarefa</th>
-		<th>Descrição</th>
+		<th>Descricao</th>
 		<th>Prazo</th>
 		<th>Prioridade</th>
-		<th>Concluída</th>
-		<th>Opções</th>
+		<th>Concluida</th>
+		<th>Opcoes</th>
 	</tr>
-	<?php foreach($lista_tarefas as $tarefa): ?>
+	<?php foreach($lista_tarefas as $tarefaa): ?>
 	<tr>
 		<td>
-			<?php echo $tarefa['nome']; ?>
+			<?php echo $tarefaa['nome']; ?>
 		</td>
 		
 		<td>
-			<?php echo $tarefa['descricao']; ?>
+			<?php echo $tarefaa['descricao']; ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_data_para_exibir($tarefa['prazo']); ?>
+			<?php echo traduz_data_para_exibir($tarefaa['prazo']); ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_prioridade($tarefa['prioridade']); ?>
+			<?php echo traduz_prioridade($tarefaa['prioridade']); ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_concluida($tarefa['concluida']); ?>
+			<?php echo traduz_concluida($tarefaa['concluida']); ?>
 		</td>
 		
 		<td>
-			<a href="editar.php?id=<?php echo $tarefa['id']); ?>">
+			<a href="editar.php?id=<?php echo $tarefaa['id']; ?>">
 				Editar
 			</a>
 		</td>
