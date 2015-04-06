@@ -1,7 +1,7 @@
 <?php
 	$btnCancelar = (!$exibir_tabela)?'<button>Cancelar</button>':'';
 ?>
-<form class="form-horizontal">
+<form method="POST" class="form-horizontal">
 	<input type="hidden" name="id" value="<?php echo $tarefa['id']; ?>" />
 	<div class="form-group">
 		<?php #echo ($tarefa['nome'] != '')? $tarefa['nome'] : 'Nova tarefa';?>
