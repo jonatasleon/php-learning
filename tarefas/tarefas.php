@@ -4,6 +4,8 @@
 	include "banco.php";
 	include "helpers.php";
 
+	$exibir_tabela = true;
+
 	function table($lista){
 		echo '<table cellpadding="1" border="border" align="center" width="0">';
 		echo '<tr>';
@@ -11,7 +13,8 @@
 			<th>Descrição</th>
 			<th>Prazo</th>
 			<th>Prioridade</th>
-			<th>Concluída</th>';
+			<th>Concluída</th>
+			<th>Opções</th>';
 		echo '</tr>';
 
 		foreach($lista as $tarefa){
@@ -21,6 +24,11 @@
 				echo '<td>' . traduz_data_para_exibir($tarefa['prazo'])	. '</td>';
 				echo '<td>' . traduz_prioridade($tarefa['prioridade']) 	. '</td>';
 				echo '<td>' . traduz_concluida($tarefa['concluida'])	. '</td>';
+				echo '<td>
+					<a href="editar.php?id=' . $tarefa['id'] . '>
+					Editar
+					</a>
+				</td>';
 			echo '</tr>';
 		}
 		echo '</table>';
