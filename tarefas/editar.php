@@ -34,6 +34,8 @@
 		}
 
 		editar_tarefa($conexao, $tarefa);
+		header("Location: tarefas.php");
+		die();
 	}
 
 	$tarefa = buscar_tarefa($conexao, $_GET['id']);

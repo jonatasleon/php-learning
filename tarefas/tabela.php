@@ -7,32 +7,31 @@
 		<th>Concluida</th>
 		<th>Opcoes</th>
 	</tr>
-	<?php foreach($lista_tarefas as $tarefaa): ?>
+	<?php foreach($lista_tarefas as $tarefa): ?>
 	<tr>
 		<td>
-			<?php echo $tarefaa['nome']; ?>
+			<?php echo $tarefa['nome']; ?>
 		</td>
 		
 		<td>
-			<?php echo $tarefaa['descricao']; ?>
+			<?php echo $tarefa['descricao']; ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_data_para_exibir($tarefaa['prazo']); ?>
+			<?php echo traduz_data_para_exibir($tarefa['prazo']); ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_prioridade($tarefaa['prioridade']); ?>
+			<?php echo traduz_prioridade($tarefa['prioridade']); ?>
 		</td>
 		
 		<td>
-			<?php echo traduz_concluida($tarefaa['concluida']); ?>
+			<?php echo traduz_concluida($tarefa['concluida']); ?>
 		</td>
 		
 		<td>
-			<a href="editar.php?id=<?php echo $tarefaa['id']; ?>">
-				Editar
-			</a>
+			<a href="editar.php?id=<?php echo $tarefa['id']; ?>">Editar</a>
+			<a href="remover.php?id=<?php echo $tarefa['id']; ?>">Remover</a>
 		</td>
 		
 	</tr>
