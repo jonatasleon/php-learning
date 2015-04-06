@@ -4,7 +4,7 @@
 <title>Gerenciador de Tarefas</title>
 <meta name="generator" content="Bluefish 2.2.5" >
 <meta name="author" content="Jonatas Leon" >
-<meta name="date" content="2015-03-01T16:23:05-0300" >
+<meta name="date" content="2015-04-06T01:38:57-0300" >
 <meta name="copyright" content="">
 <meta name="keywords" content="">
 <meta name="description" content="">
@@ -20,9 +20,10 @@
 	
 	<?php include('formulario.php'); ?>
 
-	
 	<?php if($exibir_tabela):  ?>
+		
 		<?php include('tabela.php'); ?>
+
 	<?php endif; ?>
 </body>
 </html>

@@ -4,7 +4,7 @@
 	include "banco.php";
 	include "helpers.php";
 	
-	$exibir_tabelar = false;
+	$exibir_tabela = false;
 
 	if(isset($_GET['nome']) && $_GET['nome'] != '') {
 		$tarefa = array();

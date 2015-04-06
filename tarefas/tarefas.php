@@ -5,7 +5,7 @@
 	include "helpers.php";
 
 	$exibir_tabela = true;
-
+	
 	function table($lista){
 		echo '<table cellpadding="1" border="border" align="center" width="0">';
 		echo '<tr>';
