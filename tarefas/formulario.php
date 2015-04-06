@@ -1,3 +1,6 @@
+<?php
+	$btnCancelar = (!$exibir_tabela)?'<button>Cancelar</button>':'';
+?>
 <form>
 	<input type="hidden" name="id" value="<?php echo $tarefa['id']; ?>" />
 	<fieldset>
@@ -43,7 +46,7 @@
 					? 'checked'
 					: '' ?> />
 		</label>
-
-		<input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>"  />
+		<?php echo $btnCancelar; ?>
+		<button type="submit"><?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?></button>
 	</fieldset>
 </form>
